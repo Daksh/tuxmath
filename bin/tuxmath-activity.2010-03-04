@@ -1,0 +1,70 @@
+#!/bin/sh
+###############################################################################
+#
+#    Script to start Tuxmath from Sugar
+#
+#    Author:     Marcos Orfila - www.marcosorfila.com
+#
+#    Last modified:  Jan 22nd, 2010 (Marcos Orfila)
+#
+###############################################################################
+
+while [ -n "$2" ] ; do
+    case "$1" in
+      	-b | --bundle-id)     export SUGAR_BUNDLE_ID="$2" ;;
+      	-a | --activity-id)   export SUGAR_ACTIVITY_ID="$2" ;;
+      	-o | --object-id)     export SUGAR_OBJECT_ID="$2" ;;
+	-u | --uri)           export SUGAR_URI="$2" ;;
+	*) echo unknown argument $1 $2 ;;
+    esac
+    shift;shift
+done
+export NET_WM_NAME="Tuxmath"
+
+[ -z "$SUGAR_BUNDLE_PATH" ] && export SUGAR_BUNDLE_PATH="."
+export LD_PRELOAD="$SUGAR_BUNDLE_PATH/lib/libsugarize.so"
+export LD_LIBRARY_PATH="$SUGAR_BUNDLE_PATH/lib"
+
+[ -z "$SUGAR_PROFILE" ] && SUGAR_PROFILE=default
+[ -z "$SUGAR_ACTIVITY_ROOT" ] && SUGAR_ACTIVITY_ROOT="$HOME/.sugar/$SUGAR_PROFILE/tuxmath"
+TUX_HOMEDIR="$SUGAR_ACTIVITY_ROOT/tux_homedir"
+umask 0002
+[ ! -d "$TUX_HOMEDIR" ] && mkdir -p "$TUX_HOMEDIR"
+
+
+exec bin/tuxmath \
+	--homedir $TUX_HOMEDIR \
+	--fullscreen
+
+
+# Run "./tuxmath --help" to see more options.
+
+#Run the game with:
+#--homedir dirname      - seek for user home director(ies) in the specified
+#                         location, rather than the user's actual home
+#                         directory.  You can set up a user directory tree in
+#                         this location (see README).  This option is
+#                         especially useful for schools where all students log
+#                         in with a single user name.
+#--optionfile filename  - read config settings from named file. The locations
+#                         searched for a file with a matching name are the
+#                         current working directory, the absolute path of the
+#                         filename, tuxmath's missions directory, the user's
+#                         tuxmath directory, and the user's home.
+#--playthroughlist      - to ask each question only once, allowing player to
+#                         win game if all questions successfully answered
+#--answersfirst   - to ask questions in format: ? + num2 = num3
+#                   instead of default format: num1 + num2 = ?
+#--answersmiddle  - to ask questions in format: num1 + ? = num3
+#                   instead of default format: num1 + num2 = ?
+#--nosound        - to disable sound/music
+#--nobackground   - to disable background photos (for slower systems)
+#--fullscreen     - to run in fullscreen, if possible (vs. windowed)
+#--windowed       - to run in a window rather than fullscreen
+#--keypad         - to enable the on-sceen numeric keypad
+#--demo           - to run the program as a cycling demonstration
+#--speed S        - set initial speed of the game
+#                   (S may be fractional, default is 1.0)
+#--allownegatives - to allow answers to be less than zero
+
+

@@ -1,0 +1,108 @@
+
+  Building and Sugarizing Tuxmath
+ =================================
+
+Build platform: Sugar 0.82.1 + Fedora 9
+Root privileges are required to install build dependencies.
+
+
+1) Install required packages to compile tuxmath
+
+yum install SDL_Pango-devel.i386 SDL-devel.i386 SDL-static.i386 SDL_image-devel.i386 SDL_mixer-devel.i386 SDL_ttf-devel.i386
+
+
+2) Download tuxmath source code
+
+wget \
+  --no-check-certificate \
+  https://alioth.debian.org/frs/download.php/2971/tuxmath_w_fonts-1.7.2.tar.gz
+tar zxpvf tuxmath_w_fonts-1.7.2.tar.gz
+cd tuxmath_w_fonts-1.7.2
+
+
+3) Configure
+
+PREFIX=/home/olpc/Activities/Tuxmath.activity
+./configure --prefix=$PREFIX
+
+
+4) Change Tuxmath language files if required
+
+Language files are located in the "po" folder.
+The following commands show how to substitute the Spanish translation.
+
+The new Spanish translation is in file "po/es.po.new".
+
+cd po
+# Backup the original files
+mv es.gmo es.gmo.`date '+%Y-%m-%d'`
+mv es.po es.po.`date '+%Y-%m-%d'`
+# Change new translation file name
+mv es.po.new es.po
+# Rebuild GMO file
+make update-gmo
+cd ..
+
+By now, we should have a new "es.gmo" file.
+If TuxMath is already installed, you can substitute the locale file without
+reinstalling everything:
+
+# Let's backup the original file, just in case
+ORIG_FILE="$PREFIX/share/locale/es/LC_MESSAGES/tuxmath.mo"
+mv $ORIG_FILE $ORIG_FILE.`date '+%Y-%m-%d'`
+# Now we can safely substitute the language file
+cp po/es.gmo $ORIG_FILE
+
+
+
+5) Compile and install tuxmath
+
+make
+make install
+
+The installation process will create directories "bin" and "share" inside the PREFIX directory.
+
+
+6) The "sugarization" process required to add the following components to the PREFIX directory:
+
+* "activity" folder
+* "lib" folder (with required libraries to run sugarized activities)
+* "bin/tuxmath-activity" script
+* "setup.py" script (to build an XO bundle)
+
+
+7) Internationalization (i18n) of the Python code
+
+Reference for this section:
+http://wiki.laptop.org/go/Python_i18n
+
+cd $HOME/Activities/Tuxmath.activity
+# Create the "po/Tuxmath.pot" file:
+./setup.py genpot
+# Complete the first lines of the "po/Tuxmath.pot" file with the version
+# information, your e-mail, etc.
+# Initialize a translation file for a given language (e.g. Spanish):
+cd po
+msginit -o es.po -l es
+# Check that the Context-type line looks like this:
+#   "Content-Type: text/plain; charset=UTF-8\n"
+# The former command creates file "es.po", which should contain the Spanish
+# translation. You may see some errors about a "team-address" file not found,
+# but the translation file is created anyway.
+
+Modify the "es.po" file to add the Spanish translations.
+The command that builds the Sugar bundle will also create a "locale" folder
+in the bundle folder containing the binary maps of the translations.
+
+
+
+
+Current problems:
+
+* A new user is created to run the activity every time. This creates a new directory inside "$HOME/isolation/1/uid_to_home_dir" every time the activity is run, so it's impossible to keep scores and other information.
+
+
+-----------------------------------------------------------------------------
+Author:        Marcos Orfila  -  http://www.marcosorfila.com
+Last modified: Mar 13th, 2010
+

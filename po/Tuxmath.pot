@@ -1,0 +1,60 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: 2\n"
+"Report-Msgid-Bugs-To: support@marcosorfila.com\n"
+"POT-Creation-Date: 2010-03-16 02:26+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Ana Cichero <ana.cichero@gmail.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: activity/activity.info:2 activity.py:61
+msgid "Tuxmath"
+msgstr ""
+
+#: activity.py:73
+msgid "Created by Tux4kids"
+msgstr ""
+
+#: activity.py:81
+msgid "Options:"
+msgstr ""
+
+#: activity.py:83
+msgid "No sound"
+msgstr ""
+
+#: activity.py:85
+msgid "Include negative numbers"
+msgstr ""
+
+#: activity.py:113
+#, python-format
+msgid "Spanish translation and pedagogical evaluation by %(TEACHER)s"
+msgstr ""
+
+#: activity.py:117
+#, python-format
+msgid "Sugarized by %(SUGARIZER)s"
+msgstr ""
+
+#: activity.py:127
+#, python-format
+msgid "Find more activities on %(CEIBALJAM)s website:"
+msgstr ""
+
+#: activity.py:143
+msgid "Play"
+msgstr ""
+
+#: activity.py:145
+msgid "Exit"
+msgstr ""

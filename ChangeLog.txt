@@ -1,0 +1,20 @@
+
+  TuxMath for Sugar ChangeLog
+ =============================
+
+
+2010-03-13 (version 2):
+	* Spanish translation is now much better! (thanks to Ana Cichero).
+	* The "BUILD.txt" file has some explanation on how to change
+	  language files.
+	* When the activity is lounched, a screen with credits and options is shown
+	
+
+2010-01-22 (version 1):
+	* Based on TuxMath version 1.7.2
+
+
+-------------------------------------------------------------------------------
+Author:        Marcos Orfila  -  http://www.marcosorfila.com
+Last modified: Mar 15th, 2010
+

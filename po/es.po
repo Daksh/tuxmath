@@ -1,0 +1,61 @@
+# Spanish translations for PACKAGE Tuxmath.
+# Copyright (C) 2010 THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+#  <www.marcosorfila.com>, 2010.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: 2\n"
+"Report-Msgid-Bugs-To: support@marcosorfila.com\n"
+"POT-Creation-Date: 2010-03-16 02:26+0000\n"
+"PO-Revision-Date: 2010-03-16 02:28+0000\n"
+"Last-Translator:  <support@marcosorfila.com>\n"
+"Language-Team: Spanish\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: activity/activity.info:2 activity.py:61
+msgid "Tuxmath"
+msgstr "Tuxmath"
+
+#: activity.py:73
+msgid "Created by Tux4kids"
+msgstr "Creado por Tux4kids"
+
+#: activity.py:81
+msgid "Options:"
+msgstr "Opciones:"
+
+#: activity.py:83
+msgid "No sound"
+msgstr "Sin sonido"
+
+#: activity.py:85
+msgid "Include negative numbers"
+msgstr "Incluir números negativos"
+
+#: activity.py:113
+#, python-format
+msgid "Spanish translation and pedagogical evaluation by %(TEACHER)s"
+msgstr "Traduccion al español y evaluación pedagógica realizada por %(TEACHER)s"
+
+#: activity.py:117
+#, python-format
+msgid "Sugarized by %(SUGARIZER)s"
+msgstr "Portado a Sugar por %(SUGARIZER)s"
+
+#: activity.py:127
+#, python-format
+msgid "Find more activities on %(CEIBALJAM)s website:"
+msgstr "Visita el sitio de %(CEIBALJAM)s para descargar más actividades:"
+
+#: activity.py:143
+msgid "Play"
+msgstr "Jugar"
+
+#: activity.py:145
+msgid "Exit"
+msgstr "Salir"
+

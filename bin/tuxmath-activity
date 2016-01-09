@@ -1,0 +1,51 @@
+#!/bin/sh
+###############################################################################
+#
+#    Script to start Tuxmath from Sugar
+#
+#    Author:     Marcos Orfila - www.marcosorfila.com
+#
+#    Last modified:  Mar 4th, 2010 (Marcos Orfila)
+#
+###############################################################################
+
+while [ -n "$2" ] ; do
+    case "$1" in
+      	-b | --bundle-id)     export SUGAR_BUNDLE_ID="$2" ;;
+      	-a | --activity-id)   export SUGAR_ACTIVITY_ID="$2" ;;
+      	-o | --object-id)     export SUGAR_OBJECT_ID="$2" ;;
+	-u | --uri)           export SUGAR_URI="$2" ;;
+	*) echo unknown argument $1 $2 ;;
+    esac
+    shift;shift
+done
+export NET_WM_NAME="Tuxmath"
+
+[ -z "$SUGAR_BUNDLE_PATH" ] && export SUGAR_BUNDLE_PATH="."
+export LD_PRELOAD="$SUGAR_BUNDLE_PATH/lib/libsugarize.so"
+export LD_LIBRARY_PATH="$SUGAR_BUNDLE_PATH/lib"
+
+[ -z "$SUGAR_PROFILE" ] && SUGAR_PROFILE=default
+[ -z "$SUGAR_ACTIVITY_ROOT" ] && SUGAR_ACTIVITY_ROOT="$HOME/.sugar/$SUGAR_PROFILE/tuxmath"
+export TUX_HOMEDIR="$SUGAR_ACTIVITY_ROOT/tux_homedir"
+umask 0002
+[ ! -d "$TUX_HOMEDIR" ] && mkdir -p "$TUX_HOMEDIR"
+export PYTHONPATH=$SUGAR_BUNDLE_PATH:$PYTHONPATH
+
+export TUXMATH_SCRIPT="$TUX_HOMEDIR/tuxmath_script.sh"
+[ -f $TUXMATH_SCRIPT ] && /bin/rm $TUXMATH_SCRIPT
+
+# Show the start activity
+sugar-activity -a $SUGAR_ACTIVITY_ID activity.TuxmathStart
+
+
+if [ -x $TUXMATH_SCRIPT ]; then
+	$TUXMATH_SCRIPT
+else
+	exit
+fi
+
+
+# Run "./tuxmath --help" to see more options.
+
+
