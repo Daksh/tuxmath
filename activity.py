@@ -36,7 +36,16 @@ logger = logging.getLogger('Tuxmath')
 class TuxmathStart(Activity):
 
     def __init__(self, handle):
-        # Initialize the parent
+	print "TESTING"
+	os.environ["NET_WM_NAME"]="Tuxmath"
+	os.environ["SUGAR_BUNDLE_PATH"]="."
+	os.environ["NET_WM_NAME"]="Tuxmath"
+	os.environ["NET_WM_NAME"]="Tuxmath"
+	os.environ["NET_WM_NAME"]="Tuxmath"
+	print os.environ[""]
+
+
+	# Initialize the parent
         Activity.__init__(self, handle)
         logger.debug('Initiating Tuxmath')
      
