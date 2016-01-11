@@ -5,7 +5,7 @@
 #
 #    Author:     Marcos Orfila - www.marcosorfila.com
 #
-#    Last modified:  Mar 4th, 2010 (Marcos Orfila)
+#    Last modified:  Jan 22nd, 2010 (Marcos Orfila)
 #
 ###############################################################################
 
@@ -27,25 +27,12 @@ export LD_LIBRARY_PATH="$SUGAR_BUNDLE_PATH/lib"
 
 [ -z "$SUGAR_PROFILE" ] && SUGAR_PROFILE=default
 [ -z "$SUGAR_ACTIVITY_ROOT" ] && SUGAR_ACTIVITY_ROOT="$HOME/.sugar/$SUGAR_PROFILE/tuxmath"
-export TUX_HOMEDIR="$SUGAR_ACTIVITY_ROOT/tux_homedir"
+TUX_HOMEDIR="$SUGAR_ACTIVITY_ROOT/tux_homedir"
 umask 0002
 [ ! -d "$TUX_HOMEDIR" ] && mkdir -p "$TUX_HOMEDIR"
-export PYTHONPATH=$SUGAR_BUNDLE_PATH:$PYTHONPATH
-
-export TUXMATH_SCRIPT="$TUX_HOMEDIR/tuxmath_script.sh"
-[ -f $TUXMATH_SCRIPT ] && /bin/rm $TUXMATH_SCRIPT
-
-# Show the start activity
-sugar-activity -a $SUGAR_ACTIVITY_ID activity.TuxmathStart
 
 
-if [ -x $TUXMATH_SCRIPT ]; then
-	$TUXMATH_SCRIPT
-else
-	exit
-fi
-
-
-# Run "./tuxmath --help" to see more options.
-
+exec bin/tuxmath \
+	--homedir $TUX_HOMEDIR \
+	--fullscreen
 

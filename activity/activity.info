@@ -1,6 +1,7 @@
 [Activity]
 name = Tuxmath
-activity_version = 2
-service_name = org.ceibaljam.Tuxmath
+activity_version = 1
+service_name = org.sugarlabs.Tuxmath
 icon = tuxmath-sugar-icon
 exec = tuxmath-activity
+
