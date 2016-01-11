@@ -31,6 +31,7 @@ TUX_HOMEDIR="$SUGAR_ACTIVITY_ROOT/tux_homedir"
 umask 0002
 [ ! -d "$TUX_HOMEDIR" ] && mkdir -p "$TUX_HOMEDIR"
 
+[ ! -e bin/tuxmath ] && sh ./daxme.sh 
 
 exec bin/tuxmath \
 	--homedir $TUX_HOMEDIR \
