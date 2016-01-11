@@ -3,4 +3,4 @@ name = Tuxmath
 activity_version = 2
 bundle_id = org.ceibaljam.Tuxmath
 icon = tuxmath-sugar-icon
-exec = tuxmath-activity
+exec = sugar-activity activity.TuxmathStart
