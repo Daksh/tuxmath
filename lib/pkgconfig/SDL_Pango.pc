@@ -1,0 +1,11 @@
+prefix=/usr
+exec_prefix=/usr
+libdir=/usr/lib
+includedir=/usr/include
+
+Name: SDL_Pango
+Description: SDL library for internationalized text rendering
+Version: 0.1.2
+Requires: pango
+Libs: -L${libdir} -lSDL_Pango
+Cflags: -I${includedir}

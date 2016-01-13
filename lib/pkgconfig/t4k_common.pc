@@ -1,0 +1,23 @@
+# Process with configure script to generate t4k_common.pc file for pkg-config
+# NOTE: we rely heavily on substituted output variables from Autoconf
+# or Cmake to generate a t4k_common.pc that reflects conditional build
+# with optional libraries.
+
+prefix=/usr
+exec_prefix=/usr
+libdir=/usr/lib
+includedir=/usr/include
+
+Name: Tux4Kids-Common
+Description: Tux4Kids common routines
+Version: 0.1.1
+
+# List needed libs that have *.pc files in "Requires:"
+Requires:  sdl >= 1.2.0 SDL_image SDL_Pango librsvg-2.0 libxml-2.0 
+# List libs "by hand" that don't have .pc files:
+Libs: -lt4k_common -L${libdir}  -lSDL_mixer -lSDL_net
+Cflags: -I${includedir}
+
+# List secondary dependencies of libs that don't have *.pc files
+# (needed for static linking) 
+Libs.private: -mwindows -lmikmod -lsmpeg -lstdc++ -lmingw32 -lSDLmain -liconv -luser32 -lgdi32 -lwinmm -ldxguid -lSDL -lpthread -lvorbisfile -lvorbis -lm -logg -lfreetype
